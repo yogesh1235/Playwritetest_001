@@ -20,15 +20,15 @@ namespace Playwritetest_001
         public async Task TestPage()
         {
 
-           
-
-            await Page.ClickAsync(selector:"text=Login");
+            //To Use like page object model
+            var lknlogin = Page.Locator("text=Login");
+            await lknlogin.ClickAsync();
             
             // fill text into filed 
-            await Page.FillAsync(selector: "#UserName", value: "admin");
-            await Page.FillAsync(selector: "#Password", value: "password");
-            await Page.ClickAsync(selector: "text=Log in");
-            await Expect(Page.Locator(selector: "text = Employee Details")).ToBeVisibleAsync();
+            await Page.FillAsync( "#UserName", value: "admin");
+            await Page.FillAsync( "#Password", value: "password");
+            await Page.ClickAsync( "text=Log in");
+            await Expect(Page.Locator("text = Employee Details")).ToBeVisibleAsync();
 
         }
     }
